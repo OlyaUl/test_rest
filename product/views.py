@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import detail_route
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, \
+    UpdateAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView
 
 # Create your views here.
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
