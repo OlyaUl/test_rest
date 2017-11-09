@@ -16,15 +16,20 @@ def index(request):
 
 
 class ProductViewSet(ModelViewSet):
+    """
+        this is ProductViewSet for all product
+    """
     serializer_class = ProductSerializer
     model = Products
 
     def get_queryset(self):
         return Products.objects.all()
 
-    @detail_route(url='custom')
-    def custom(self):
-        return HttpResponse('custom_response')
+    # @detail_route(url='custom')
+    # def custom(self):
+    #     return HttpResponse('custom_response')
+
+
 
 
 # class ProductView(ListAPIView, CreateAPIView):
