@@ -8,7 +8,6 @@ from .models import Products, Category
 #     product_serializer.is_valid()
 
 
-
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Products
