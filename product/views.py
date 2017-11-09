@@ -3,6 +3,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, D
 
 # Create your views here.
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Products, Category
 from .serializers import ProductSerializer, CategorySerializer
@@ -12,23 +13,31 @@ def index(request):
     return render(request, 'product/index.html', {})
 
 
-class ProductView(ListAPIView, CreateAPIView):
+class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
-    # queryset = Products.objects.all()
     model = Products
 
     def get_queryset(self):
         return Products.objects.all()
 
 
-class ProductDetailView(RetrieveUpdateDestroyAPIView, UpdateAPIView, DestroyAPIView):
-    serializer_class = ProductSerializer
-    # queryset = Products.objects.all()
-    model = Products
-    permission_classes = (IsAuthenticatedOrReadOnly, )
-
-    def get_queryset(self):
-        return Products.objects.all()
+# class ProductView(ListAPIView, CreateAPIView):
+#     serializer_class = ProductSerializer
+#     # queryset = Products.objects.all()
+#     model = Products
+#
+#     def get_queryset(self):
+#         return Products.objects.all()
+#
+#
+# class ProductDetailView(RetrieveUpdateDestroyAPIView, UpdateAPIView, DestroyAPIView):
+#     serializer_class = ProductSerializer
+#     # queryset = Products.objects.all()
+#     model = Products
+#     permission_classes = (IsAuthenticatedOrReadOnly, )
+#
+#     def get_queryset(self):
+#         return Products.objects.all()
 
 
 class CategoryView(ListAPIView, CreateAPIView):
@@ -41,9 +50,3 @@ class CategoryDetailView(RetrieveUpdateDestroyAPIView, UpdateAPIView, DestroyAPI
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
     model = Category
-
-
-'''class ProductCreateView(ListAPIView, CreateAPIView):
-    serializer_class = ProductSerializer
-    queryset = Products.objects.all()
-    model = Products'''
