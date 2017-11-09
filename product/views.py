@@ -1,4 +1,6 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.decorators import detail_route
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
 
 # Create your views here.
@@ -19,6 +21,10 @@ class ProductViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Products.objects.all()
+
+    @detail_route(url='custom')
+    def custom(self):
+        return HttpResponse('custom_response')
 
 
 # class ProductView(ListAPIView, CreateAPIView):
