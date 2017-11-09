@@ -7,3 +7,11 @@ class ProductSerializer(ModelSerializer):
     class Meta:
         model = Products
         fields = ('name', 'product_category')
+
+
+class CategorySerializer(ModelSerializer):
+    products = ProductSerializer(many=True)
+
+    class Meta:
+        model = Category
+        fields = ('name', 'products', )

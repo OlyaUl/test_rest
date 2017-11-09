@@ -8,4 +8,4 @@ class Category(models.Model):
 
 class Products(models.Model):
     name = models.CharField(max_length=30)
-    product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product_category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
